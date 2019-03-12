@@ -25,7 +25,7 @@ The ideal outcome for the project would be:
 
 ## Quick start
 
-To start with, let's load an run the extension in the browser.
+To start with, let's load and run the extension in the browser.
 
 First, build the extension from source:
 
@@ -43,7 +43,7 @@ Then, load it into the browser:
 
 The extension should now be loaded!
 
-To run it, click the green book icon on the top right of the page which will load the main plugin page, and you should see a list of your last 30 bookmarks.
+To run it, click the green book icon on the top right of the page which will load the main plugin page, and you should see a book like the above, and a text input to filter and show your bookmarks.
 
 ## Project setup
 
