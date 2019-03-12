@@ -1,0 +1,28 @@
+{
+  "name": "Vue HMR Test",
+  "version": "0.1",
+  "description": "A demo extension to get running with HMR",
+  "permissions": [
+    "bookmarks"
+  ],
+  "icons": {
+    "128": "assets/logo.png"
+  },
+  "browser_action": {
+      "default_title": "Vue HMR Test",
+      "default_icon": "assets/logo.png"
+  },
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "scripts/background.js"
+    ]
+  },
+  "web_accessible_resources": [
+    "index.html",
+    "popup.html",
+    "assets/logo.png"
+  ],
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
