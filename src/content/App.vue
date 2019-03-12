@@ -37,10 +37,6 @@ h3 {
   margin: 40px 0 0;
 }
 
-ul {
-  margin: 0;
-}
-
 a {
   color: #42b983;
 }

@@ -6,13 +6,15 @@
 
 This is a demo project to see if we can get HRM working in a Chrome extension.
 
-A chrome extension is essentially a web app that has access to the Browser API so you can interact with tabs, bookmarks, etc.
+A chrome extension is essentially HTML and JavaScript files that have access to the Browser API so you can interact with tabs, bookmarks, etc. An extension manifest provides instructions to the browser on what files do what:
 
-Generally the extension code is compiled and loaded into the browser and the extension runs. If you want to make any changes, you need to rebuild and reload.
+- https://developer.chrome.com/extensions/getstarted
 
-Because this process is laborious, people have been looking at using live reload and the like to reduce manual reloading steps.
+For more complex extensions, it makes sense to use modern build tools, and to compile the code before loading it into the browser.
 
-However, it seems that the following React project has gotten HMR working, so that makes it much easier to maintain state in a complex extension:
+For either setup, if you make any changes you need manually reload the extension from the Extensions page. Because this is fairly laborious, some people have been using plugins like Live Reload to improve the developer experience.
+
+However, it seems that the following React project has gotten HMR working, which allows the developer to maintain application state rather than [always](https://github.com/rubenspgcavalcante/webpack-chrome-extension-reloader/issues/72) having the page reload:
 
 - https://github.com/jhen0409/react-chrome-extension-boilerplate
 
@@ -49,9 +51,14 @@ To run it, click the green book icon on the top right of the page which will loa
 
 The project is set up using webpack, and with two separate builds; `content` and `background`.
 
-The content script acts as the "client" with the background acting as "server". The two builds talk to each other via messaging, in the same way that website clients talk to servers via AJAX and JSON. An extension can have many content scripts, but only one background script.
+The content script acts as the "client" with the background acting as "server". The two builds talk to each other via messaging, in the same way that website clients talk to servers via AJAX and JSON. An extension can have many content scripts, but only one background script
 
 This is the gist of how extensions work. It's similar to Electron with its "main" and "render" processes.
+
+More information here:
+
+- [Extension architecture](https://developer.chrome.com/extensions/overview#arch)
+- [Message passing](https://developer.chrome.com/extensions/messaging)
 
 
 ## Development
