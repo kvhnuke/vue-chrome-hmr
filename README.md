@@ -1,20 +1,20 @@
 # Vue Chrome HMR Setup
 
-<img src="public/assets/logo.png" height="300" />
+<img src="public/assets/logo.png" height="300" style="margin:auto" />
 
 ## Abstract
 
-This is a demo project to see if we can get HRM working in a Chrome extension.
+This is a demo project to see if we can get Vue DevTools and HRM working in a Chrome extension.
 
-A chrome extension is essentially HTML and JavaScript files that have access to the Browser API so you can interact with tabs, bookmarks, etc. An extension manifest provides instructions to the browser on what files do what:
-
-- https://developer.chrome.com/extensions/getstarted
-
+A chrome extension is essentially HTML and JavaScript files that have access to the Browser API so you can interact with tabs, bookmarks, etc:
+ 
+ - https://developer.chrome.com/extensions/getstarted
+ 
 For more complex extensions, it makes sense to use modern build tools, and to compile the code before loading it into the browser.
 
-For either setup, if you make any changes you need manually reload the extension from the Extensions page. Because this is fairly laborious, some people have been using plugins like Live Reload to improve the developer experience.
+For either setup, if you make any changes you need manually reload the extension from the Extensions page. Because this is fairly laborious, some [people have been using plugins](https://medium.com/front-end-weekly/hot-reloading-extensions-using-webpack-cdfa0e4d5a08) like Live Reload to improve the developer experience.
 
-However, it seems that the following React project has gotten HMR working, which allows the developer to maintain application state rather than [always](https://github.com/rubenspgcavalcante/webpack-chrome-extension-reloader/issues/72) having the page reload:
+However, it seems that the following React project has gotten HMR working, which allows the developer to maintain application state rather than having [the whole page](https://github.com/rubenspgcavalcante/webpack-chrome-extension-reloader/issues/72) reload:
 
 - https://github.com/jhen0409/react-chrome-extension-boilerplate
 
@@ -22,6 +22,7 @@ I would like to achieve the same for Vue if possible, so I've built this simple 
 
 The ideal outcome for the project would be:
 
+- Vue DevTools working in all environments
 - HMR working in under the `chrome-extension:` protocol
 - a webpack setup that reloads both background and content scripts on change (see below)
 
@@ -66,12 +67,12 @@ More information here:
 
 I currently use a bit of a hack to let me develop both web app and Chrome extension:
 
-- I run a development build, I can view the site on `localhost:` with HMR but only limited Chrome interaction
-- I run a production build / watch, I can view the extension on `chrome-extension:` with full Chrome interaction
+- I run a development build, I can view the site on `localhost:` with Vue DevTools and HMR but only limited Chrome interaction
+- I run a production build / watch, I can view the extension on `chrome-extension:` without DevTools or HMR but with full Chrome interaction
 
 To reload scripts *without* HMR, you have to inspect the content or background script from the Extensions page, which pops up the DevTools panel for that process, then you use `CMD + R` to reload.
 
-What I want to be able to do is create a final build setup where I have full Chrome interaction, but also have code and styling changes show via HMR, and potentially have the background script reload too.
+What I want to be able to do is create a final build setup where I have full Chrome interaction, DevTools, partial updates via HMR, and potentially have the background script reload too.
 
 
 ## Scripts
@@ -83,7 +84,7 @@ These are my current – imperfect – scripts:
 npm run dev
 ```
 
-These last two sets of content / background scripts need to be run side-by-side in separate windows, as the extension needs both content and backgound to run at the same time.
+These last two sets of content / background scripts need to be run side-by-side in separate windows, as the extension needs both content and background to run at the same time.
 
 ```bash
 # extension development (full chrome interaction, but no HMR)
