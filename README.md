@@ -4,7 +4,7 @@
 
 ## Abstract
 
-This is a demo project to see if we can get Vue DevTools and HRM working in a Chrome extension.
+This is a demo project to see if we can get Vue DevTools and HMR working in a Chrome extension.
 
 A chrome extension is essentially HTML and JavaScript files that have access to the Browser API so you can interact with tabs, bookmarks, etc:
  
@@ -56,11 +56,15 @@ The content script acts as the "client" with the background acting as "server". 
 
 This is the gist of how extensions work. It's similar to Electron with its "main" and "render" processes.
 
+This project specifically uses message passing in:
+
+- `src/content/Bookmarks.vue` to pass the message
+- `src/background/browser.js` to receive the message and return data
+
 More information here:
 
 - [Extension architecture](https://developer.chrome.com/extensions/overview#arch)
 - [Message passing](https://developer.chrome.com/extensions/messaging)
-
 
 ## Development
 
